@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero-slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": { "type": "slide", "settings": { "image": "shopify://shop_images/top_10.jpg", "heading": "", "heading_size": "h1", "subheading": "", "button_label": "", "link": "shopify://collections", "box_align": "middle-right", "show_text_box": false, "text_alignment": "left", "image_overlay_opacity": 0, "color_scheme": "scheme-1", "text_alignment_mobile": "center" } },
+        "slide-1": { "type": "slide", "settings": { "image": "shopify://shop_images/top_5.jpg", "heading": "", "heading_size": "h1", "subheading": "", "button_label": "", "link": "shopify://collections", "box_align": "middle-right", "show_text_box": false, "text_alignment": "left", "image_overlay_opacity": 0, "color_scheme": "scheme-1", "text_alignment_mobile": "center" } },
+        "slide-2": { "type": "slide", "settings": { "image": "shopify://shop_images/top_11.jpg", "heading": "", "heading_size": "h1", "subheading": "", "button_label": "", "link": "shopify://collections", "box_align": "middle-right", "show_text_box": false, "text_alignment": "left", "image_overlay_opacity": 0, "color_scheme": "scheme-1", "text_alignment_mobile": "center" } },
+        "slide-3": { "type": "slide", "settings": { "image": "shopify://shop_images/1004277.jpg", "heading": "", "heading_size": "h1", "subheading": "", "button_label": "", "link": "shopify://collections", "box_align": "middle-right", "show_text_box": false, "text_alignment": "left", "image_overlay_opacity": 0, "color_scheme": "scheme-1", "text_alignment_mobile": "center" } },
+        "slide-4": { "type": "slide", "settings": { "image": "shopify://shop_images/P1007376-scaled.jpg", "heading": "", "heading_size": "h1", "subheading": "", "button_label": "", "link": "shopify://collections", "box_align": "middle-right", "show_text_box": false, "text_alignment": "left", "image_overlay_opacity": 0, "color_scheme": "scheme-1", "text_alignment_mobile": "center" } }
+      },
+      "block_order": ["slide-0","slide-1","slide-2","slide-3","slide-4"],
+      "settings": { "layout": "full_bleed", "slide_height": "large", "slider_visual": "dots", "auto_rotate": true, "change_slides_speed": 5, "image_behavior": "none", "show_text_below": true }
+    },
+    "lead-text": {
+      "type": "rich-text",
+      "blocks": { "text-0": { "type": "text", "settings": { "text": "<p>MONORAL(モノラル)は、2010年にスタートした日本発のアウトドア用品ブランドです。<br/>シンプルで効果的な機能を持ち、かつ人力で運べるキャンプ用品を開発。<br/>アウトドアの新しい愉しみ方を創造していきます。</p>" } } },
+      "block_order": ["text-0"],
+      "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-1", "full_width": true, "padding_top": 40, "padding_bottom": 52 }
+    },
+    "news-event": {
+      "type": "featured-blog",
+      "settings": { "blog": "ニュース", "post_limit": 3, "heading": "NEWS / EVENT", "heading_size": "h1", "columns_desktop": 3, "show_view_all": true, "show_image": true, "show_date": true, "show_author": false, "color_scheme": "scheme-1", "padding_top": 36, "padding_bottom": 36 }
+    },
+    "product-collections": {
+      "type": "collection-list",
+      "blocks": {
+        "collection-0": { "type": "featured_collection", "settings": { "collection": "焚き火台" } },
+        "collection-1": { "type": "featured_collection", "settings": { "collection": "タープ" } },
+        "collection-2": { "type": "featured_collection", "settings": { "collection": "アクセサリー" } }
+      },
+      "block_order": ["collection-0", "collection-1", "collection-2"],
+      "settings": { "title": "PRODUCTS", "heading_size": "h1", "image_ratio": "square", "columns_desktop": 4, "color_scheme": "", "show_view_all": false, "columns_mobile": "1", "swipe_on_mobile": true, "padding_top": 36, "padding_bottom": 36 }
+    }
+  },
+  "order": ["hero-slideshow", "lead-text", "news-event", "product-collections"]
+}
