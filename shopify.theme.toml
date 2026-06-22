@@ -1,0 +1,9 @@
+[environments.live]
+store = "monoral-2.myshopify.com"
+theme = "153165660354"
+path = "."
+
+[environments.dev]
+store = "monoral-2.myshopify.com"
+theme = "153188073666"
+path = "."

@@ -1,0 +1,15 @@
+{
+  "name": "monoralbikes-shopify-theme",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "shopify:themes": "shopify theme list --store monoral-2.myshopify.com",
+    "shopify:info": "shopify theme info --environment live",
+    "shopify:dev": "shopify theme dev --environment dev",
+    "shopify:pull": "shopify theme pull --environment live",
+    "shopify:push:live": "shopify theme push --environment live --allow-live"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^4.2.0"
+  }
+}
