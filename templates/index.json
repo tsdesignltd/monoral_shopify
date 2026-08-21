@@ -39,7 +39,7 @@
         "collection-2": { "type": "featured_collection", "settings": { "collection": "アクセサリー" } }
       },
       "block_order": ["collection-0", "collection-1", "collection-2"],
-      "settings": { "title": "PRODUCTS", "heading_size": "h1", "image_ratio": "square", "columns_desktop": 4, "color_scheme": "", "show_view_all": false, "columns_mobile": "1", "swipe_on_mobile": true, "padding_top": 36, "padding_bottom": 36 }
+      "settings": { "title": "PRODUCTS", "heading_size": "h1", "image_ratio": "square", "columns_desktop": 4, "color_scheme": "", "show_view_all": false, "columns_mobile": "2", "swipe_on_mobile": false, "padding_top": 36, "padding_bottom": 36 }
     }
   },
   "order": ["hero-slideshow", "lead-text", "news-event", "product-collections"]
