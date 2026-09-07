@@ -27,7 +27,7 @@
       <div class="contact-line-official__content">
         <p class="contact-line-official__eyebrow">LINE CONTACT</p>
         <h3 class="contact-line-official__heading">お問い合わせは公式LINEでお気軽に</h3>
-        <p class="contact-line-official__text">商品や在庫、修理などのお問い合わせは、メールより公式LINEからのご連絡がおすすめです。</p>
+        <p class="contact-line-official__text">商品仕様、在庫、アフターサービスのお問い合わせは、公式LINEからのご連絡がおすすめです。</p>
         <a
           href="https://lin.ee/pLiTizB"
           class="button contact-line-official__button"
@@ -62,6 +62,7 @@
       endif
     -%}
     {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      <h3 class="contact-form__heading">お問い合わせメールフォーム</h3>
       {%- if form.posted_successfully? -%}
         <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
           {{- 'icon-success.svg' | inline_asset_content -}}

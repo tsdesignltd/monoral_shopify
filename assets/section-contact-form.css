@@ -14,6 +14,19 @@
   margin-bottom: 1.5rem;
 }
 
+.contact form {
+  margin: 0;
+  padding: 2.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  background: rgba(var(--color-foreground), 0.02);
+}
+
+.contact-form__heading {
+  margin: 0 0 2rem;
+  font-size: 2rem;
+  line-height: 1.35;
+}
+
 
 .contact-line-official {
   display: flex;
@@ -90,6 +103,10 @@
 
 
 @media screen and (max-width: 749px) {
+  .contact form {
+    padding: 2rem;
+  }
+
   .contact-line-official {
     flex-direction: column;
     align-items: flex-start;
