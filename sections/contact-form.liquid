@@ -23,6 +23,38 @@
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
+    <div class="contact-line-official{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="contact-line-official__content">
+        <p class="contact-line-official__eyebrow">LINE CONTACT</p>
+        <h3 class="contact-line-official__heading">お問い合わせは公式LINEでお気軽に</h3>
+        <p class="contact-line-official__text">商品や在庫、修理などのお問い合わせは、メールより公式LINEからのご連絡がおすすめです。</p>
+        <a
+          href="https://lin.ee/pLiTizB"
+          class="button contact-line-official__button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          公式LINEを追加する
+        </a>
+      </div>
+      <a
+        href="https://lin.ee/pLiTizB"
+        class="contact-line-official__qr-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="MONORAL公式LINEを友だち追加"
+      >
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;color=06C755&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Flin.ee%2FpLiTizB"
+          alt="MONORAL公式LINE QRコード"
+          class="contact-line-official__qr"
+          width="180"
+          height="180"
+          loading="lazy"
+        >
+      </a>
+    </div>
+
     {%- liquid
       assign contact_form_class = 'isolate'
       if settings.animations_reveal_on_scroll

@@ -14,6 +14,56 @@
   margin-bottom: 1.5rem;
 }
 
+
+.contact-line-official {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+  margin: 0 0 3rem;
+  padding: 2.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  background: rgba(var(--color-foreground), 0.02);
+}
+
+.contact-line-official__content {
+  flex: 1 1 auto;
+}
+
+.contact-line-official__eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.contact-line-official__heading {
+  margin: 0 0 0.8rem;
+  font-size: 2rem;
+  line-height: 1.35;
+}
+
+.contact-line-official__text {
+  margin: 0 0 1.6rem;
+  line-height: 1.7;
+}
+
+.contact-line-official__button {
+  min-width: 20rem;
+}
+
+.contact-line-official__qr-link {
+  display: block;
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.contact-line-official__qr {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+}
+
+
 @media screen and (min-width: 750px) {
   .contact .field {
     margin-bottom: 2rem;
@@ -35,5 +85,29 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 2rem;
+  }
+}
+
+
+@media screen and (max-width: 749px) {
+  .contact-line-official {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.8rem;
+    margin-bottom: 2.4rem;
+    padding: 2rem;
+  }
+
+  .contact-line-official__heading {
+    font-size: 1.8rem;
+  }
+
+  .contact-line-official__button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact-line-official__qr-link {
+    align-self: center;
   }
 }
