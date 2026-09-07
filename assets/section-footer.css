@@ -133,8 +133,8 @@
   justify-content: flex-start;
   width: 100%;
   max-width: 36rem;
-  min-height: 20rem;
-  padding: 2.4rem;
+  min-height: 16rem;
+  padding: 2rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.12);
   background: rgba(var(--color-foreground), 0.02);
 }
@@ -284,8 +284,8 @@
 
   .footer-promo-block {
     max-width: 36rem;
-    min-height: 18rem;
-    padding: 2rem;
+    min-height: 15rem;
+    padding: 1.8rem;
   }
 
   .footer-block__newsletter {
