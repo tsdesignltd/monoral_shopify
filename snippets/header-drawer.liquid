@@ -59,7 +59,20 @@
                             {{ link.title | escape }}
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- if link.handle == 'products' -%}
+                              <li>
+                                <a
+                                  id="HeaderDrawer-products-all"
+                                  href="{{ routes.all_products_collection_url }}"
+                                  class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if request.path == routes.all_products_collection_url %} menu-drawer__menu-item--active{% endif %}"
+                                  {% if request.path == routes.all_products_collection_url %}aria-current="page"{% endif %}
+                                >全商品</a>
+                              </li>
+                            {%- endif -%}
                             {%- for childlink in link.links -%}
+                              {%- if link.handle == 'products' and childlink.url == routes.all_products_collection_url -%}
+                                {%- continue -%}
+                              {%- endif -%}
                               <li>
                                 {%- if childlink.links == blank -%}
                                   <a
