@@ -40,6 +40,30 @@
   width: 100%;
 }
 
+.blog__posts .article-card,
+.blog__posts .card-wrapper,
+.blog__posts .card__content,
+.blog__posts .card__information {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.blog__posts .card__content {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.blog__posts .card__heading,
+.blog__posts .article-card__excerpt {
+  overflow-wrap: anywhere;
+}
+
+.blog__posts .article-card__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
 .blog__button {
   margin-top: 3rem;
 }
