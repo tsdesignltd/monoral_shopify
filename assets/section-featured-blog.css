@@ -13,6 +13,8 @@
 }
 
 .blog__posts.articles-wrapper {
+  --grid-desktop-horizontal-spacing: 4.8rem;
+  --grid-mobile-horizontal-spacing: 2.4rem;
   margin-bottom: 1rem;
 }
 
@@ -38,6 +40,11 @@
 
 .blog__posts .card-wrapper {
   width: 100%;
+}
+
+.blog__posts .article-card.card--media .card__inner {
+  width: 66.6667%;
+  align-self: flex-start;
 }
 
 .blog__posts .article-card,
