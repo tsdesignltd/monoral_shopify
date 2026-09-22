@@ -195,7 +195,8 @@
                 {%- when 'description' -%}
                   {%- if product.description != blank -%}
                     <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                      {{ product.description }}
+                      {%- assign support_href = routes.root_url | append: '?view=after-support' | prepend: 'href="' | append: '"' -%}
+                      {{ product.description | replace: 'href="/?mode=f1"', support_href }}
                     </div>
                   {%- endif -%}
                 {%- when 'sku' -%}

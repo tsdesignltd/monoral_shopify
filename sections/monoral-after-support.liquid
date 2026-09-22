@@ -1,0 +1,39 @@
+{% style %}
+  .monoral-after-support { padding-top: 4.8rem; padding-bottom: 6.4rem; }
+  .monoral-after-support h1 { border-bottom: 1px solid currentColor; padding-bottom: 2.4rem; margin: 0 0 4rem; }
+  .monoral-after-support h2 { border-left: 4px solid #83d0e8; padding-left: 1.6rem; margin: 4rem 0 2rem; font-size: 2.4rem; }
+  .monoral-after-support p { line-height: 1.9; overflow-wrap: anywhere; }
+{% endstyle %}
+
+<div class="monoral-after-support page-width page-width--narrow">
+  <h1>当店のアフターサポートについて</h1>
+  <div class="rte">
+    <h2>返品・交換について</h2>
+    <p>商品到着時に、破損箇所等の初期不良があった場合は良品と交換させていただきます。<br>
+      こちらの<a href="{{ routes.root_url }}pages/contact">お問い合わせフォーム</a>よりご連絡ください。<br>
+      MONORAL ONLINE SHOPよりご購入の場合は、ご連絡のうえ、送料着払いにて弊社へお送りください。</p>
+    <p>なお、お客様のご都合による返品の場合は、返送料のみご負担願います。<br>
+      また、一度ご使用になった商品は返品には応じかねますのでご注意ください。</p>
+
+    <h2>修理について</h2>
+    <p>お買い上げ後1年間、通常使用による故障は無料で修理いたします。<br>
+      こちらの<a href="{{ routes.root_url }}pages/contact">お問い合わせフォーム</a>よりご連絡のうえ、弊社へお送りください。<br>
+      ※ご返送の際の送料はお客様のご負担とさせていただきます。</p>
+    <p>なお破損の程度によっては修理ができない場合もございますのでご了承ください。</p>
+    <p>また、焚き火台の火床部分（クロス、メッシュ）などの消耗部品は対象外となります。</p>
+
+    <h2>お問い合わせ先</h2>
+    <p>有限会社TSDESIGN モノラル事業部<br>
+      〒194-0032 東京都町田市本町田1833-4<br>
+      平日：10:00〜17:00 土日祝日休<br>
+      <a href="{{ routes.root_url }}pages/contact">お問い合わせフォーム</a></p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "アフターサポート",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}
