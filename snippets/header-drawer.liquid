@@ -168,6 +168,21 @@
                     </a>
                   {%- endif -%}
                 </li>
+                {%- if link_title_downcase == 'brand' -%}
+                  {%- assign note_url = routes.root_url | append: '?view=note' -%}
+                  {%- if blogs['note'].articles_count > 0 -%}
+                    {%- assign note_url = blogs['note'].url -%}
+                  {%- endif -%}
+                  <li>
+                    <a
+                      id="HeaderDrawer-note"
+                      href="{{ note_url }}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if blog.handle == 'note' or template.suffix == 'note' %} menu-drawer__menu-item--active{% endif %}"
+                      style="text-transform: none;"
+                      {% if request.path == blogs['note'].url or template.suffix == 'note' %}aria-current="page"{% endif %}
+                    >note</a>
+                  </li>
+                {%- endif -%}
                 {%- if link_title_downcase contains 'news' -%}
                   <li>
                     <a

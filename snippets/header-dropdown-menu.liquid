@@ -134,6 +134,23 @@
           </a>
         {%- endif -%}
       </li>
+      {%- if link_title_downcase == 'brand' -%}
+        {%- assign note_url = routes.root_url | append: '?view=note' -%}
+        {%- if blogs['note'].articles_count > 0 -%}
+          {%- assign note_url = blogs['note'].url -%}
+        {%- endif -%}
+        <li>
+          <a
+            id="HeaderMenu-note"
+            href="{{ note_url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            style="text-transform: none;"
+            {% if request.path == blogs['note'].url or template.suffix == 'note' %}aria-current="page"{% endif %}
+          >
+            <span{% if blog.handle == 'note' or template.suffix == 'note' %} class="header__active-menu-item"{% endif %}>note</span>
+          </a>
+        </li>
+      {%- endif -%}
       {%- if link_title_downcase contains 'news' -%}
         <li>
           <a
