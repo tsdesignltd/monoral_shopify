@@ -13,16 +13,28 @@
   .mono-download-list h2 {
     margin: 0 0 1rem;
     font-size: 2rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
   }
 
   .mono-download-list p {
     margin-top: 0;
   }
 
-  .mono-download-list a[aria-disabled='true'] {
-    opacity: 0.55;
-    pointer-events: none;
+  .mono-contents-video {
+    margin: 3.2rem 0;
+    min-width: 0;
+  }
+  .mono-contents-video iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+  }
+  .mono-contents-video h3 {
+    font-size: 2rem;
+    margin: 1.6rem 0 0.8rem;
+    overflow-wrap: anywhere;
   }
 
   @media screen and (min-width: 750px) {
@@ -41,22 +53,49 @@
     <p>{{ section.settings.lead }}</p>
 
     <div class="mono-download-list">
-      <h2>VIDEO</h2>
-      <p>製品紹介動画や使い方の動画をこちらからご覧いただけます。</p>
-      <p><a href="#" aria-disabled="true">COMING SOON</a></p>
+      <h2>Movie</h2>
+      <article class="mono-contents-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/xMpemo5o_98" title="ワイヤフレームソリッド" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>ワイヤフレームソリッド</h3>
+        <p>ワイヤフレームソリッド焚き火台の組立から使用までの動画です。たった2点のパーツから構成されており、組立が容易なことがよく分かります。</p>
+      </article>
+      <article class="mono-contents-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/iBSVg58LBsc" title="小割銀鉈の使い方" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>小割銀鉈の使い方</h3>
+        <p>小割銀鉈を使った薪割り動画です。鉈でありながらナイフのように扱える、こだわりの詰まった逸品です。</p>
+      </article>
+      <article class="mono-contents-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/oyxiZcVDs8M" title="ワイヤフレームフェザー組立手順" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>ワイヤフレームフェザー組立手順</h3>
+        <p>まるで炎そのもの WireFlame / ワイヤフレームフェザーの組み立て手順ムービーです。パーツ数は2点と少なく、1分もかからずに組み立てることができます。</p>
+      </article>
+      <article class="mono-contents-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/jFWU_TqbucI" title="ワイヤフレーム焚き火見本" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>ワイヤフレーム焚き火見本</h3>
+        <p>連れて歩く焚き火台 MONORALワイヤフレームを使用した、焚き火の見本です。少ない薪で小さくゆったりと焚き火するスタイルです。焚き火クロスに保温性があるため、金属製焚き火台と比較して小さい火が長持ちする効果があります。</p>
+      </article>
+      <article class="mono-contents-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/3UkqNizMWGw" title="ワイヤフレーム組立手順" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>ワイヤフレーム組立手順</h3>
+        <p>連れて歩く焚き火台 / ワイヤフレームの組立手順ムービーです。1分もあれば組み立てることができます。</p>
+      </article>
     </div>
 
     <div class="mono-download-list">
-      <h2>CATALOG</h2>
-      <p>製品カタログや資料のPDFをこちらからダウンロードできます。</p>
-      <p><a href="#" aria-disabled="true">COMING SOON</a></p>
+      <h2>Catalogue</h2>
+      <h3>2025年春夏カタログ</h3>
+      <p>2025年春夏の紙カタログのPDF版です。新製品も合わせて全製品が一覧できます。</p>
+      <p><a href="https://monoral.jp/wp-content/uploads/2025/07/monoral_2025SS_web.pdf" target="_blank" rel="noopener">2025年春夏カタログを開く（PDF）</a></p>
+      <h3>2024年春夏カタログ</h3>
+      <p>2024年春夏の紙カタログのPDF版です。新製品も合わせて全製品が一覧できます。</p>
+      <p><a href="https://monoral.jp/wp-content/uploads/2024/05/monoral_a5_2024SSweb.pdf" target="_blank" rel="noopener">2024年春夏カタログを開く（PDF）</a></p>
     </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "MONORAL download",
+  "name": "MONORAL contents",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -64,7 +103,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "DOWNLOAD"
+      "default": "CONTENTS"
     },
     {
       "type": "text",
