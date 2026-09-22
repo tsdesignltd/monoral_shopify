@@ -262,6 +262,28 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   font-weight: var(--font-body-weight);
 }
 
+/* Page titles retain their original size hierarchy at two-thirds scale. */
+main h1 {
+  font-size: calc(var(--font-heading-scale) * 2rem);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+main h1.h0 {
+  font-size: calc(var(--font-heading-scale) * 2.666667rem);
+}
+
+@media screen and (min-width: 750px) {
+  main h1 {
+    font-size: calc(var(--font-heading-scale) * 2.666667rem);
+  }
+
+  main h1.h0 {
+    font-size: calc(var(--font-heading-scale) * 3.466667rem);
+  }
+}
+
 h1,
 h2,
 h3,

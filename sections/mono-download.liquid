@@ -20,6 +20,20 @@
     margin-top: 0;
   }
 
+  .mono-catalogue-link {
+    display: block;
+    width: 100%;
+    max-width: 38.4rem;
+    overflow-wrap: anywhere;
+  }
+
+  .mono-catalogue-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.2rem;
+  }
+
   .mono-contents-video {
     margin: 3.2rem 0;
     min-width: 0;
@@ -55,6 +69,10 @@
     <div class="mono-download-list">
       <h2>Movie</h2>
       <article class="mono-contents-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/fwQMJJMwfP0" title="MONORAL ワイヤフレームソリッド2024" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>MONORAL ワイヤフレームソリッド2024</h3>
+      </article>
+      <article class="mono-contents-video">
         <iframe src="https://www.youtube-nocookie.com/embed/xMpemo5o_98" title="ワイヤフレームソリッド" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h3>ワイヤフレームソリッド</h3>
         <p>ワイヤフレームソリッド焚き火台の組立から使用までの動画です。たった2点のパーツから構成されており、組立が容易なことがよく分かります。</p>
@@ -83,12 +101,10 @@
 
     <div class="mono-download-list">
       <h2>Catalogue</h2>
-      <h3>2025年春夏カタログ</h3>
-      <p>2025年春夏の紙カタログのPDF版です。新製品も合わせて全製品が一覧できます。</p>
-      <p><a href="https://monoral.jp/wp-content/uploads/2025/07/monoral_2025SS_web.pdf" target="_blank" rel="noopener">2025年春夏カタログを開く（PDF）</a></p>
-      <h3>2024年春夏カタログ</h3>
-      <p>2024年春夏の紙カタログのPDF版です。新製品も合わせて全製品が一覧できます。</p>
-      <p><a href="https://monoral.jp/wp-content/uploads/2024/05/monoral_a5_2024SSweb.pdf" target="_blank" rel="noopener">2024年春夏カタログを開く（PDF）</a></p>
+      <a class="mono-catalogue-link" href="https://monoral.jp/wp-content/uploads/2025/07/monoral_2025SS_web.pdf" target="_blank" rel="noopener">
+        <img src="{{ 'monoral-catalogue-2025.png' | asset_url }}" alt="MONORAL 2025年春夏カタログ表紙" width="768" height="559" loading="lazy">
+        <span>2025年春夏カタログを開く（PDF）</span>
+      </a>
     </div>
   </div>
 </div>
