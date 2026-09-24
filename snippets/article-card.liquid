@@ -88,7 +88,7 @@
                 <span>{{ article.author }}</span>
               {%- endif -%}
             </div>
-            {%- if show_excerpt -%}
+            {%- if show_excerpt and hide_excerpt != true -%}
               {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
                 <p class="article-card__excerpt rte-width">
                   {%- if article.excerpt.size > 0 -%}
@@ -127,7 +127,7 @@
               <span>{{ article.author }}</span>
             {%- endif -%}
           </div>
-          {%- if show_excerpt -%}
+          {%- if show_excerpt and hide_excerpt != true -%}
             {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
               <p class="article-card__excerpt rte-width">
                 {%- if article.excerpt.size > 0 -%}
