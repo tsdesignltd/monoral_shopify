@@ -168,7 +168,7 @@
                     </a>
                   {%- endif -%}
                 </li>
-                {%- if link_title_downcase == 'brand' -%}
+                {%- if link_title_downcase contains 'news' -%}
                   {%- assign note_url = routes.root_url | append: '?view=note' -%}
                   {%- if blogs['note'].articles_count > 0 -%}
                     {%- assign note_url = blogs['note'].url -%}
