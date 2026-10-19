@@ -1,0 +1,281 @@
+<div class="legacy">{% comment %} header {% endcomment %}
+{% assign total_8percent = 0 %}
+{% assign total_10percent = 0 %}
+{% assign order_tags = order.tags | join %}
+<div style="padding-bottom: 20px;">
+  <img style="width: 25%; float: left"
+       alt="MONORAL" src="https://cdn.shopify.com/s/files/1/0760/3909/4466/files/monoral-order-printer-logo.png?v=1792414193">
+
+  <p style="text-align: right; margin: 0; font-size: 12px">
+    {% if order.fulfillment_status == 'fulfilled' %}
+        {% for fulfillment in order.fulfillments %}
+          {{ fulfillment.created_at | date: "%Y年%m月%d日" }}
+        {% endfor %}
+    {% else %}
+         {{ "now" | date: "%Y年%m月%d日" }}<br />
+    {% endif %}
+    ご注文番号 {{ order.order_name }}<br><br>
+    <b style="font-size: 16px">MONORAL</b><br>
+    アウトデザイン株式会社<br>
+    登録番号：T8012301011312<br>
+    {{ shop.address.zip | upcase }} {{ shop.address.province | replace: 'Aichi', '愛知県' | replace: 'Akita', '秋田 県' | replace: 'Aomori', '青森県' | replace: 'Chiba', '千葉県' | replace: 'Ehime', '愛 媛県' | replace: 'Fukui', '福井県' | replace: 'Fukuoka', '福岡県' | replace: 'Fukushima', '福島県' | replace: 'Gifu', '岐阜県' | replace: 'Gunma', '群馬県' | replace: 'Hiroshima', '広島県' | replace: 'Hokkaidō', '北海道' | replace: 'Hyōgo', '兵庫県' | replace: 'Ibaraki', '茨城県' | replace: 'Ishikawa', '石川県' | replace: 'Iwate', '岩手県' | replace: 'Kagawa', '香川県' | replace: 'Yamanashi', '山梨県' | replace: 'Yamaguchi', '山口県' | replace: 'Kōchi', '高知県' | replace: 'Kumamoto', '熊本県' | replace: 'Kyōto', '京都府' | replace: 'Mie', '三重県' | replace: 'Yamagata', '山形県' | replace: 'Miyazaki', '宮崎県' | replace: 'Nagano', '長野県' | replace: 'Nagasaki', '長崎県' | replace: 'Nara', '奈良県' | replace: 'Niigata', '新潟県' | replace: 'Ōita', '大分県' | replace: 'Okayama', '岡山県' | replace: 'Okinawa', '沖縄県' | replace: 'Ōsaka', '大阪府' | replace: 'Saga', '佐賀 県' | replace: 'Saitama', '埼玉県' | replace: 'Shiga', '滋賀県' | replace: 'Shimane', '島根県' | replace: 'Shizuoka', '静岡県' | replace: 'Tochigi', '栃木県' | replace: 'Tokushima', '徳島県' | replace: 'Tottori', '鳥取県' | replace: 'Toyama', '富山県' | replace: 'Tōkyō', '東京都' | replace: 'Miyagi', '宮城県' | replace: 'Wakayama', '和 歌山県' | replace: 'Kanagawa', '神奈川県' | replace: 'Kagoshima', '鹿児島県' }}{{ shop.address.city }}{{ shop.address.address1 }} {{ shop.address.address2 }}<br>
+    TEL:{{ shop.phone }}
+  </p>
+</div>
+<div style="content:'';display:block;clear:both;"></div>
+
+{% comment %} order contents {% endcomment %}
+
+<div style="padding-bottom: 20px">
+  <h2 style="font-size: 26px; letter-spacing: 1px; margin: 0 0 5px 0;">{% if order.financial_status == 'paid' and order.cancelled != true %}納品書 兼 領収書{% else %}納品書{% endif %}</h2>
+  <h3 style="font-size: 20px; letter-spacing: 1px; margin: 0 0 5px 0;">ご注文内容</h3>
+  <table style="width: 100%;">
+    <thead>
+    <tr>
+      <th style="width: 52%; border: 1px solid #000000; padding: 5px; font-size: 12px;">商品名</th>
+      <th style="width: 10%; text-align: center; border: 1px solid #000000; padding: 5px; font-size: 12px;"></th>
+      <th style="width: 11%; text-align: center; border: 1px solid #000000; padding: 5px; font-size: 12px;">単価</th>
+      <th style="width: 7%; text-align: center; border: 1px solid #000000; padding: 5px; font-size: 12px;">数量</th>
+      <th style="width: 10%; text-align: center; border: 1px solid #000000; padding: 5px; font-size: 12px;">金額</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% # - Shopify migration: replicating behaviour of line_items variable %}
+{% assign shopify_migrated_refunded_line_items = refunds | map: "refund_line_items" | map: "line_item" %}
+{% assign shopify_migrated_line_items = order.line_items  | concat: shopify_migrated_refunded_line_items | concat: order.tip_line_items | uniq %}
+ {% comment %}  | concat: shopify_migrated_refunded_line_items ↑からキャンセル分は表示しないようにカットした {% endcomment %}
+{% for line_item in shopify_migrated_line_items %}
+      <tr>
+        <td style="border: 1px solid #000000; padding: 5px;">
+          <b>{{ line_item.title }}
+          {% for tax in line_item.tax_lines %}
+            {% if tax.rate == 0.08 and tax.price != 0 %}
+                {% assign total_8percent = total_8percent | plus: line_item.line_price %}
+            ※
+            {% elsif tax.rate == 0.1 and tax.price != 0  %}
+                {% assign total_10percent = total_10percent | plus: line_item.line_price %}
+            {% endif %}
+          {% endfor %}
+          </b>
+        </td>
+        <td style="text-align: right; border: 1px solid #000000; padding: 5px;">
+        <img src="{{ line_item.image | img_url: 'medium'}}" style="margin:0 auto;">
+        </td>
+        <td style="text-align: right; border: 1px solid #000000; padding: 5px;">
+            {% if line_item.original_price != line_item.price %}
+              <s>{{ line_item.original_price | money }}</s>
+            {% endif %}
+          <b>{{ line_item.price | money }}</b>
+        </td>
+        <td style="text-align: right; border: 1px solid #000000; padding: 5px;">{{ line_item.quantity }}</td>
+        <td style="text-align: right; border: 1px solid #000000; padding: 5px;">
+          <b>{{ line_item.line_price | money }}</b>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p style="font-size:12px;">※軽減税率対象</p>
+</div>
+
+{% if shopify_migrated_line_items.size > 1 %}
+    {% endif %}
+
+    {% comment %} payment details {% endcomment %}
+
+    {% assign komoju = "コンビニ決済_komoju" %}
+    {% assign daibiki = "代引き" %}
+
+    {% assign yenToDollarRate = 100 %}
+    {% assign transaction_gateway = order.transactions.last.gateway %}
+
+    {% if transaction_gateway == komoju %}
+        {% assign convenience_store_payment_margin = 190 | times: yenToDollarRate %}
+        {% assign total_price_with_margins = order.total_price | plus: convenience_store_payment_margin %}
+    {% elsif transaction_gateway == daibiki %}
+          {% if order.total_price < 1000000 %}
+              {% assign daibiki_payment_margin = 330 | times: yenToDollarRate %}
+          {% elsif order.total_price >= 1000000 and order.total_price <= 3000000 %}
+              {% assign daibiki_payment_margin = 440 | times: yenToDollarRate %}
+          {% elsif order.total_price >= 3000000 and order.total_price <= 10000000 %}
+              {% assign daibiki_payment_margin = 660 | times: yenToDollarRate %}
+          {% elsif order.total_price >= 10000000 %}
+              {% assign daibiki_payment_margin = 1100 | times: yenToDollarRate %}
+        {% endif %}
+        {% assign total_price_with_margins = order.total_price | plus: daibiki_payment_margin %}
+    {% else %}
+        {% assign total_price_with_margins = order.total_price %}
+    {% endif %}
+
+  <div style="padding-bottom: 20px; ">
+    <h3 style="float: left; font-size: 20px; letter-spacing: 1px; margin: 0;">お支払内容</h3>
+    <p style="text-align: right; padding: 5px 0 5px 0; font-size: 16px; margin: 0;">
+      <b>お支払い方法：{{ order.transactions.last.gateway | payment_method | replace: "_", " " }}</b>
+    </p>
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          {% if order.discounts %}
+            <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;">クーポン支払い</th>
+          {% endif %}
+          <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;">小計</th>
+          {% if order.shipping_address %}
+          <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;">送料</th>
+          {% endif %}
+          {% if transaction_gateway == komoju %}
+          <th style="font-size: 12px; border: 1px solid #000000; width: 20%; text-align: center;">コンビニ決済手数料</th>
+          {% elsif transaction_gateway == daibiki %}
+          <th style="font-size: 12px; border: 1px solid #000000; width: 20%; text-align: center;">代引手数料</th>
+          {% endif %}
+          <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;">
+            <strong>合計</strong>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% if order.discounts %}
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">
+                {% for discount in order.discounts %}
+                    <p style="font-size: 12px; padding: 0; margin: 0;">{{ discount.title }}:{{ discount.savings | money }}</p>
+                {% endfor %}
+            </td>
+          {% endif %}
+          <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">{{ order.line_items_subtotal_price | money }}</td>
+          {% if order.shipping_address %}
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">{{ order.shipping_price | money }}</td>
+          {% endif %}
+          {% if transaction_gateway == komoju %}
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">{{ convenience_store_payment_margin | money }}</td>
+          {% elsif transaction_gateway == daibiki %}
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">{{ daibiki_payment_margin | money }}</td>
+          {% endif %}
+          <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">
+            <strong>{{ total_price_with_margins | money }}</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="padding-bottom: 20px; ">
+    <h3 style="float: left; font-size: 20px; letter-spacing: 1px; margin: 0;">内訳</h3>
+    <table style="width: 100%">
+      <thead>
+        <tr>
+            <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;"></th>
+            <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;">税込金額</th>
+            <th style="font-size: 12px; border: 1px solid #000000; width: 20%; padding: 5px; text-align: center;">うち消費税額</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tax in order.tax_lines %}
+        <tr>
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">{{ tax.rate | times: 100 }}%</td>
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">
+            {% if tax.rate == 0.08 %}
+                {{ total_8percent | money }}
+            {% elsif tax.rate == 0.1 %}
+                {{ total_10percent | plus:order.shipping_price | money }}
+            {% endif %}
+            </td>
+            <td style="font-size: 14px; border: 1px solid #000000; padding: 5px; text-align: center;">
+            {% if tax.rate == 0.08 %}
+                {% assign zei = total_8percent  | divided_by: 1.08 | times: 0.08 %}
+            {% elsif tax.rate == 0.1 %}
+                {% assign zei = total_10percent | plus:order.shipping_price  | divided_by: 1.1 | times: 0.1 %}
+            {% endif %}
+                {{ zei | money }}
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div style="content:'';display:block;clear:both;"></div>
+  <div style="width: 100%; display: flex; justify-content: space-between; padding-bottom: 5px;">
+    <p style="margin-bottom:30px;"><strong>
+    {% if order.financial_status != 'paid' or order.cancelled == true %}
+    お支払い状況：{{ order.financial_status_label }}。この書類は領収書ではありません。
+    {% elsif order_tags contains "preorder" %}
+    上記金額を予約販売商品の前受金として正に領収致しました。
+    {% else %}
+    上記金額を正に領収致しました。
+    {% endif %}
+    </strong></p>
+  </div>
+    {% comment %} note {% endcomment %}
+  <div style="width: 100%; display: flex; justify-content: space-between; padding-bottom: 5px;">
+
+    {% comment %} shipping information {% endcomment %}
+
+    {% if order.shipping_address %}
+      <div style="width: 47%;">
+        <h3 style="font-size: 20px; letter-spacing: 1px; margin: 0; padding-bottom: 5px;">配送先情報</h3>
+        <div style="border: 1px solid #000000; padding: 5px;">
+          <p style="font-size: 12px;"><strong>{{ order.shipping_address.last_name }} {{ order.shipping_address.first_name }}</strong> 様</p>
+          <p style="font-size: 12px;">
+              {% if order.shipping_address.company %}
+                  {{ order.shipping_address.company }}<br/>
+              {% endif %}
+              {{ order.shipping_address.zip | upcase }}<br/>
+              {{ order.shipping_address.translated_province_name }}{{ order.shipping_address.city }}{{ order.shipping_address.address1 }}<br/>
+              {{ order.shipping_address.address2 }}
+          </p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% comment %} billing information {% endcomment %}
+
+    {% if order.billing_address %}
+      <div style="width: 47%;">
+        <h3 style="font-size: 20px; letter-spacing: 1px; margin: 0; padding-bottom: 5px;">請求先情報</h3>
+        <div style="border: 1px solid #000000; padding: 5px;">
+          <p style="font-size: 12px;"><strong>{{ order.billing_address.last_name }} {{ order.billing_address.first_name }}</strong> 様</p>
+          <p style="font-size: 12px;">
+              {% if order.billing_address.company %}
+                  {{ order.billing_address.company }}<br/>
+              {% endif %}
+              {{ order.billing_address.zip | upcase }}<br/>
+              {{ order.billing_address.translated_province_name }}{{ order.billing_address.city }}{{ order.billing_address.address1 }}<br/>
+              {{ order.billing_address.address2 }}
+          </p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+    {% if order.note %}
+      <div style="width: 100%; justify-content: space-between; padding-bottom: 10px;">
+        <div style="border: 1px solid #000000; padding: 5px;min-height:30px;">
+          <p style="font-size:10px;">{{ order.note | newline_to_br }}</p>
+        </div>
+      </div>
+    {% endif %}
+<h4>配送指定など</h4>
+      <div style="width: 100%; justify-content: space-between; padding-bottom: 10px;">
+        <div style="border: 1px solid #000000; padding: 5px;min-height:10px;">
+        {% for attribute in order.attributes %}
+            {% assign att_title = attribute | first %}
+            {% assign shipping-option-time-title = attribute | last %}
+            {% if att_title == "プレゼント梱包を希望する（無料）" %}
+                プレゼント梱包を希望する<br>
+            {% endif %}
+            {% if att_title == "shipping-option-date" %}
+                配達希望日: {{ attribute | last }}<br>
+            {% endif %}
+            {% if att_title == "shipping-option-time" %}
+                {% if shipping-option-time-title != "指定なし" %}
+                    配達希望時間: {{ attribute | last }}<br>
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+
+        </div>
+      </div>
+  {% comment %} footer {% endcomment %}
+
+  <p style="font-size: 12px; text-align: right;">ご注文に関するお問い合わせはこちらまでお願いいたします。 <u>monoralorder@gmail.com</u></p>
+
+{% if shopify_migrated_line_items.size > 1 %}
+{% endif %}</div>
